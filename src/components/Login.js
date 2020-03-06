@@ -49,101 +49,100 @@ export const Login = ({navigation}) => {
     }
   };
   // console.log(user);
-  setTimeout(() => {
-    if (!user) {
-      return (
-        <>
-          <View style={style.LoginContainer}>
-            <View style={style.LoginLogo}>
-              <Animatable.View
-                animation={'fadeIn'}
-                style={style.LogoIconContainer}
-                duration={1000}>
-                <Image
-                  source={require('../dist/img/icon.png')}
-                  style={style.LogoIconImg}
-                />
-              </Animatable.View>
-              <Animatable.View
-                animation={'fadeIn'}
-                style={style.LogoTextContainer}
-                duration={2000}>
-                <Image
-                  style={style.LogoTextImg}
-                  source={require('../dist/img/text.png')}
-                />
-              </Animatable.View>
-            </View>
-
-            <View style={style.LoginInput}>
-              <Input
-                onChangeText={text =>
-                  action({type: 'CHANGE_DATA', name: 'username', payload: text})
-                }
-                leftIcon={
-                  <Icon name="account-circle" size={24} color="#114B5F" />
-                }
-                value={state.username}
-                placeholder="Username"
+  // setTimeout(() => {
+  if (!user) {
+    return (
+      <>
+        <View style={style.LoginContainer}>
+          <View style={style.LoginLogo}>
+            <Animatable.View
+              animation={'fadeIn'}
+              style={style.LogoIconContainer}
+              duration={1000}>
+              <Image
+                source={require('../dist/img/icon.png')}
+                style={style.LogoIconImg}
               />
-              <Input
-                onChangeText={text =>
-                  action({type: 'CHANGE_DATA', name: 'password', payload: text})
-                }
-                leftIcon={<Icon name="lock" size={24} color="#114B5F" />}
-                rightIcon={
-                  <Icon
-                    name={state.passHidden ? 'visibility-off' : 'visibility'}
-                    size={24}
-                    color={state.passHidden ? '#bfc3c9' : '#114B5F'}
-                    onPress={() =>
-                      action({
-                        type: 'CHANGE_DATA',
-                        name: 'passHidden',
-                        payload: !state.passHidden,
-                      })
-                    }
-                  />
-                }
-                secureTextEntry={state.passHidden}
-                value={state.password}
-                placeholder="Password"
+            </Animatable.View>
+            <Animatable.View
+              animation={'fadeIn'}
+              style={style.LogoTextContainer}
+              duration={2000}>
+              <Image
+                style={style.LogoTextImg}
+                source={require('../dist/img/text.png')}
               />
-              {/* END OF LOGIN INPUT */}
-
-              <View style={style.LoginButtonContainer}>
-                <TouchableOpacity
-                  onPress={onBtnLoginPress}
-                  style={style.LoginButtonStyle}>
-                  {loading ? (
-                    <ActivityIndicator size="small" color="#fff" />
-                  ) : (
-                    <Text style={style.LoginButtonText}>Login</Text>
-                  )}
-                </TouchableOpacity>
-              </View>
-              {/* END OF LOGIN BUTTON */}
-            </View>
-
-            <View style={style.LoginButtonArea}>
-              <View style={style.RegButtonContainer}>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('Register')}>
-                  {loading ? (
-                    <ActivityIndicator size="small" color="#fff" />
-                  ) : (
-                    <Text style={style.RegButtonText}>Go to Register</Text>
-                  )}
-                </TouchableOpacity>
-              </View>
-              {/* END OF BUTTON SECTION */}
-            </View>
-            {/* END OF LOGIN CONTAINER */}
+            </Animatable.View>
           </View>
-        </>
-      );
-    }
-  }, 2000);
+
+          <View style={style.LoginInput}>
+            <Input
+              onChangeText={text =>
+                action({type: 'CHANGE_DATA', name: 'username', payload: text})
+              }
+              leftIcon={
+                <Icon name="account-circle" size={24} color="#114B5F" />
+              }
+              value={state.username}
+              placeholder="Username"
+            />
+            {/* <Input
+              onChangeText={text =>
+                action({type: 'CHANGE_DATA', name: 'password', payload: text})
+              }
+              leftIcon={<Icon name="lock" size={24} color="#114B5F" />}
+              rightIcon={
+                <Icon
+                  name={state.passHidden ? 'visibility-off' : 'visibility'}
+                  size={24}
+                  color={state.passHidden ? '#bfc3c9' : '#114B5F'}
+                  onPress={() =>
+                    action({
+                      type: 'CHANGE_DATA',
+                      name: 'passHidden',
+                      payload: !state.passHidden,
+                    })
+                  }
+                />
+              }
+              secureTextEntry={state.passHidden}
+              value={state.password}
+              placeholder="Password"
+            /> */}
+            {/* END OF LOGIN INPUT */}
+
+            <View style={style.LoginButtonContainer}>
+              <TouchableOpacity
+                onPress={onBtnLoginPress}
+                style={style.LoginButtonStyle}>
+                {loading ? (
+                  <ActivityIndicator size="small" color="#fff" />
+                ) : (
+                  <Text style={style.LoginButtonText}>Login</Text>
+                )}
+              </TouchableOpacity>
+            </View>
+            {/* END OF LOGIN BUTTON */}
+          </View>
+
+          <View style={style.LoginButtonArea}>
+            <View style={style.RegButtonContainer}>
+              <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+                {loading ? (
+                  <ActivityIndicator size="small" color="#fff" />
+                ) : (
+                  <Text style={style.RegButtonText}>Go to Register</Text>
+                )}
+              </TouchableOpacity>
+            </View>
+            {/* END OF BUTTON SECTION */}
+          </View>
+          {/* END OF LOGIN CONTAINER */}
+        </View>
+      </>
+    );
+  }
+  // }, 2000);
 
   return (
     <View style={style.LoginContainer}>
